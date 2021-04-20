@@ -18,10 +18,19 @@ async function nodeGitTests() {
     }
 
     const index = await repo.refreshIndex();
+    core.info(`1`);
     const changes = await index.writeTree();
+
+    core.info(`2`);
     const parent = await repo.getCommit('HEAD');
+    
+    core.info(`3`);
     const authorSig = Signature.now(authorName, authorEmail);
+    
+    core.info(`4`);
     const committer = Signature.now(authorName, authorEmail);
+    
+    core.info(`5`);
     const commitId = await repo.createCommit(
       'HEAD',
       authorSig,
