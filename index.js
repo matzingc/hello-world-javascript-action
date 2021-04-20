@@ -9,9 +9,9 @@ async function nodeGitTests() {
   const repoPath = process.env.GITHUB_WORKSPACE || '';
   core.info(`Checking for changes in '${repoPath}'`);
   const repo = await Git.Repository.open(repoPath);
-  const status = await repo.getStatus();
-  core.info(status);
-  for (const file of status) {
+  const statusFiles = await repo.getStatus();
+  core.info(`status files count: '${statusFiles.length}'`)
+  for (const file of statusFiles) {
     core.info(`Status: ${file.status()} - ${file.path()}}`);
   }
 }
