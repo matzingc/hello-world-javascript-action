@@ -35,7 +35,7 @@ async function nodeGitTests() {
       'HEAD',
       authorSig,
       committer,
-      msg,
+      'test commit',
       changes,
       [parent]
     );
