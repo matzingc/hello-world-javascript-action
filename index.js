@@ -8,6 +8,6 @@ async function getRepo() {
   console.log('running main');
   const repoPath = process.env.GITHUB_WORKSPACE || '';
   core.info(`Checking for changes in '${repoPath}'`);
-  const repo = await Repository.open(repoPath);
+  const repo = await Git.Repository.open(repoPath);
   const status = await repo.getStatus();  
 }
