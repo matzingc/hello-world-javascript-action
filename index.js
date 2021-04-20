@@ -30,6 +30,7 @@ async function nodeGitTests() {
       changes,
       [parent]
     );
+    core.info(`OID: ${commitId}`)
     const commit = await repo.getCommit(commitId);
     core.info(`Commited files. New sha: ${commit.sha()}`);
     core.setOutput('sha', commit.sha());
