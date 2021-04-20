@@ -25,10 +25,10 @@ async function nodeGitTests() {
     const parent = await repo.getHeadCommit();
     
     core.info(`3`);
-    const authorSig = Signature.now(authorName, authorEmail);
+    const authorSig = Signature.now('ChaseTest', 'testemail@gmail.com');
     
     core.info(`4`);
-    const committer = Signature.now(authorName, authorEmail);
+    const committer = Signature.now('ChaseTest', 'testemail@gmail.com');
     
     core.info(`5`);
     const commitId = await repo.createCommit(
