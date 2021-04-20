@@ -2,7 +2,9 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 var Git = require("nodegit");
 
-async function main() {
+getRepo();
+
+async function getRepo() {
   console.log('running main');
   const repoPath = process.env.GITHUB_WORKSPACE || '';
   core.info(`Checking for changes in '${repoPath}'`);
