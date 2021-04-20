@@ -22,7 +22,7 @@ async function nodeGitTests() {
     const changes = await index.writeTree();
 
     core.info(`2`);
-    const parent = await repo.getCommit('HEAD');
+    const parent = await repo.getHeadCommit();
     
     core.info(`3`);
     const authorSig = Signature.now(authorName, authorEmail);
