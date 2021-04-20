@@ -4,10 +4,11 @@ var Git = require("nodegit");
 
 getRepo();
 
-async function getRepo() {
-  console.log('running main');
+async function nodeGitTests() {
+  core.info('running nodeGitTests');
   const repoPath = process.env.GITHUB_WORKSPACE || '';
   core.info(`Checking for changes in '${repoPath}'`);
   const repo = await Git.Repository.open(repoPath);
-  const status = await repo.getStatus();  
+  const status = await repo.getStatus();
+  core.info(status);
 }
