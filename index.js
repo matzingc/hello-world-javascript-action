@@ -11,4 +11,7 @@ async function nodeGitTests() {
   const repo = await Git.Repository.open(repoPath);
   const status = await repo.getStatus();
   core.info(status);
+  for (const file of status) {
+    core.info(`Status: ${file.status()} - ${file.path()}}`);
+  }
 }
