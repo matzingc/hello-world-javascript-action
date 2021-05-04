@@ -22,7 +22,7 @@ jobs:
         uses: octokit/request-action@v2.x
         with:
           route: PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge
-          owner: github.repository_owner
+          owner: ${{ github.repository_owner }}
           repo: hello-world-javascript-action
           pull_number: ${{ github.event.inputs.pull_request_number }}
           target_url: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
