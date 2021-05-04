@@ -1,0 +1,33 @@
+name: API Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      pull_request_number:
+        description: "Pull Request Number"
+        required: true
+      commit_title:
+        description: "Commit Title"
+        required: true
+      commit_message:
+        description: "Commit Message"
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Merge the pull request
+        uses: octokit/request-action@v2.x
+        with:
+          route: PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge
+          owner: github.repository_owner
+          repo: hello-world-javascript-action
+          pull_number: ${{ github.event.inputs.pull_request_number }}
+          target_url: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          merge_method: squash
+          commit_title: "'${{ github.event.inputs.commit_title }}'"
+          commit_message: "'${{ github.event.inputs.commit_message }}'"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
