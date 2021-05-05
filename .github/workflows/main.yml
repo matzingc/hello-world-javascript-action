@@ -10,6 +10,8 @@ jobs:
       # you must check out the repository
       - name: Check node version
         run: node -v
+      - name: Check current folder
+        run: ls
       - name: Checkout repo
         uses: actions/checkout@v2
       - name: NodeGit tests
